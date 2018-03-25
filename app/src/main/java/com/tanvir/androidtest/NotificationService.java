@@ -37,6 +37,7 @@ public class NotificationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
+
         return Service.START_STICKY;
 
     }
@@ -44,6 +45,7 @@ public class NotificationService extends Service {
     @Override
     public void onCreate() {
         // Check if notification should be shown and do so if needed
+
 
         mNotificationManager =
                 (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
@@ -72,14 +74,20 @@ public class NotificationService extends Service {
                         notifyID,
                         builder.build());
 
+
+                startForeground(notifyID,  builder.build());
+
             }
 
             public void onFinish() {
 
+
             }
         }.start();
 
+
     }
+
 }
 
 
